@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using api_relation.Data;
 using api_relation.Dtos;
 using api_relation.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +50,8 @@ namespace api_relation.Controllers
             }
         }
         [HttpGet]
+    
+        // [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Friend>>> GetAllFriend()
         {
             try
