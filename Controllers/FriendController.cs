@@ -26,6 +26,7 @@ namespace api_relation.Controllers
 
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Friend>>> GetOneFriend(int id)
         {
             try
@@ -50,7 +51,7 @@ namespace api_relation.Controllers
             }
         }
         [HttpGet]
-    
+        [Authorize]
         // [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Friend>>> GetAllFriend()
         {
@@ -62,7 +63,8 @@ namespace api_relation.Controllers
                     .Include(friends => friends.Things)
                     .ToListAsync(); 
 
-                    return Ok(friends);
+
+                return Ok(friends);
 
             }
             catch (System.Exception error)
@@ -74,6 +76,7 @@ namespace api_relation.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Friend>>> PostFriend(FriendDTo friendDTo)
         {
             try
@@ -111,6 +114,7 @@ namespace api_relation.Controllers
 
         }
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Friend>>> PutFriend(FriendDTo friendDto, int id)
         {
             try
